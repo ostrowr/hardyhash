@@ -11,9 +11,11 @@ jobs:
             apt-get install -y build-essential
             apt-get install -y libssl-dev
             apt-get install -y wget
+            apt-get install -y python-pip
+            pip install gcovr
       - checkout
       - run:
-          name: Getting Cereal
+          name: Get Cereal
           command: |
             wget https://github.com/USCiLab/cereal/archive/v1.2.2.tar.gz
             tar -xvf v1.2.2.tar.gz
@@ -21,13 +23,13 @@ jobs:
             mv cereal-1.2.2/include/cereal /usr/local/include/cereal
             rm -rf cereal-1.2.2
       - run:
-          name: Testing
+          name: Test
           command: |
             make coverage
             ./test
-            gcov -ar *.cc
+            gcovr -r . --html --html-details -o coverage.html
             mkdir /tmp/artifacts
-            mv *.gcov /tmp/artifacts
+            mv coverage* /tmp/artifacts
           pwd:
             src
       - store_artifacts:

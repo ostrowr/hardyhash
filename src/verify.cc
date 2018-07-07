@@ -1,3 +1,5 @@
+#include "verify.hh"
+
 #include <fstream>
 #include <cassert>
 

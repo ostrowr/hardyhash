@@ -1,3 +1,5 @@
+#include "sign.hh"
+
 #include <strings.h>
 #include <stdio.h>
 #include <fstream>

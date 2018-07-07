@@ -14,7 +14,7 @@ LDFLAGS = -lm -lcrypto -lssl -lpthread -lgcov
 
 PROGRAMS = initialize.cc sign.cc verify.cc test.cc
 EXTRAS = crypto_utils.cc treehash.cc types.cc wots.cc
-HEADERS = $(EXTRAS:.cc=.hh)
+HEADERS = $(EXTRAS:.cc=.hh) $(PROGRAMS:.cc=.hh)
 SOURCES = $(PROGRAMS) $(EXTRAS)
 OBJECTS = $(SOURCES:.cc=.o)
 TARGETS = $(PROGRAMS:.cc=)

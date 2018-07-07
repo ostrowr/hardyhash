@@ -1,11 +1,7 @@
-#include <iomanip>
-#include <openssl/engine.h>
-#include <openssl/err.h>
-#include <openssl/evp.h>
-#include <openssl/kdf.h>
-#include <openssl/rand.h>
+#pragma once
+
 #include <openssl/sha.h>
-#include <sstream>
+
 #include <string>
 #include <vector>
 

@@ -1,10 +1,6 @@
 #include <array>
-#include <iostream>
-#include <map>
-#include <stack>
 #include <vector>
 
-#include "crypto_utils.hh"
 #include "types.hh"
 
 // See https://www.cdc.informatik.tu-darmstadt.de/reports/reports/AuthPath.pdf

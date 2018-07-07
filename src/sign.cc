@@ -143,23 +143,19 @@ void update_auth_path(signer_info_t *signer_info) {
 }
 
 /**
- * Sign a message!
+ * Sign a message
+ *
+ * @param[in]  state_path  The signer's key state
+ * @param[in]  message     The message to sign
+ *
+ * @return     The signature
  */
-int main(int argc, char *argv[]) {
-    if (argc != 4) {
-        print_usage();
-    }
-
-    // TODO error checking on the inputs
-    string state_path = argv[1];
-    string message_path = argv[2];
-    string signature_path = argv[3];
-    signer_info_t *signer_info = load_signer_info(state_path);
-    vector<byte> message = read_file(message_path);
-
+signature_t sign(string state_path, const vector<byte> &message) {
     // signature is already totally computed in the previous step
     // but we have to do some housekeeping
     // to make sure the state is updated before we return it.
+    signer_info_t *signer_info = load_signer_info(state_path);
+
     signature_t signature;
     signature.auth_path = signer_info->auth_path;
 
@@ -210,5 +206,24 @@ int main(int argc, char *argv[]) {
     signature.leaf.hash = w.get_pk();
 
     delete signer_info;
+    return signature;
+}
+
+
+
+/**
+ * Sign a message!
+ */
+int main(int argc, char *argv[]) {
+    if (argc != 4) {
+        print_usage();
+    }
+
+    // TODO error checking on the inputs
+    string state_path = argv[1];
+    string message_path = argv[2];
+    string signature_path = argv[3];
+    vector<byte> message = read_file(message_path);
+    signature_t signature = sign(state_path, message);
     write_signature(signature, signature_path);
 }

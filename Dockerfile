@@ -8,5 +8,6 @@ RUN apt-get update && \
     tar -xvf v1.2.2.tar.gz && \
     rm v1.2.2.tar.gz && \
     mkdir /home/include && \
-    mv cereal-1.2.2/include/cereal /home/include/cereal
+    mv cereal-1.2.2/include/cereal /usr/local/include/cereal && \
+    rm -rf cereal-1.2.2
 WORKDIR home/

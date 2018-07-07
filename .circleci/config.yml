@@ -24,4 +24,9 @@ jobs:
           name: Testing
           command: |
             make coverage
-            ./tests
+            ./test
+            gcov -ar *.cc
+            mkdir -p $CIRCLE_ARTIFACTS/coverage
+            mv *.gcov $CIRCLE_ARTIFACTS/coverage
+          pwd:
+            src

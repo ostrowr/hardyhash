@@ -1,0 +1,1 @@
+docker build -t hbs_image .

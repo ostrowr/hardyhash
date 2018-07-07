@@ -1,0 +1,8 @@
+include/cereal/
+initialize
+out/
+outfile
+sign
+signature*
+test
+verify

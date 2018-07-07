@@ -4,7 +4,24 @@ jobs:
     docker:
       - image: ubuntu
     steps:
+      - run:
+          name: Install Packages
+          command: |
+            apt-get update
+            apt-get install -y build-essential
+            apt-get install -y libssl-dev
+            apt-get install -y wget
       - checkout
       - run:
-          name: Greeting
-          command: echo Hello, world.
+          name: Getting Cereal
+          command: |
+            wget https://github.com/USCiLab/cereal/archive/v1.2.2.tar.gz
+            tar -xvf v1.2.2.tar.gz
+            rm v1.2.2.tar.gz
+            mv cereal-1.2.2/include/cereal /usr/local/include/cereal
+            rm -rf cereal-1.2.2
+      - run:
+          name: Testing
+          command: |
+            make coverage
+            ./tests

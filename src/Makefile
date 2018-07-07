@@ -10,7 +10,7 @@ CPPFLAGS = -Wall -pedantic -std=c++14 -Iinclude
 # -lcrypto   link to crypto library
 # -lssl      link to openssl library
 # -lpthread  link to pthread library
-LDFLAGS = -lm -lcrypto -lssl -lpthread
+LDFLAGS = -lm -lcrypto -lssl -lpthread -lgcov
 
 PROGRAMS = initialize.cc sign.cc verify.cc test.cc
 EXTRAS = crypto_utils.cc treehash.cc types.cc wots.cc
@@ -23,12 +23,14 @@ TARGETS = $(PROGRAMS:.cc=)
 debug:      CPPFLAGS    += -g -O0
 release:    CPPFLAGS    += -O3
 profile:	CPPFLAGS	+= -pg -O3
+coverage:	CPPFLAGS	+= -g -fprofile-arcs -ftest-coverage
 
 all: $(TARGETS)
 
 debug:      all
 release:    all
 profile:    all
+coverage:	all
 
 initialize: initialize.o crypto_utils.o treehash.o types.o wots.o
 	$(CXX) $(CPPFLAGS) -o $@ $^ $(LDFLAGS)

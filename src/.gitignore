@@ -6,3 +6,5 @@ sign
 signature*
 test
 verify
+*.gcov
+*.gcda

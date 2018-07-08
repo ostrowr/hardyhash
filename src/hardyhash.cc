@@ -1,3 +1,6 @@
+/**
+ * A wrapper around initialize, sign, and verify
+ */
 #include <sys/stat.h>
 
 #include <string>

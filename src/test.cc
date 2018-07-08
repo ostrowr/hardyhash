@@ -3,16 +3,17 @@
 
 #include "crypto_utils.hh"
 #include "treehash.hh"
-// #include "sign.hh"
-// #include "verify.hh"
+#include "sign.hh"
+#include "verify.hh"
 #include "initialize.hh"
 
 using namespace std;
 
 void test_initialize() {
     const byte* randomness = (byte *) "randomness";
-    keys_t *keys = initialize(8, 8, randomness, 4);
-    cout << print_bytes(keys->public_key.data(), HASH_SIZE) << endl;
+    keys_t *keys = initialize(4, 4, randomness, 10);
+    string pk = print_bytes(keys->public_key.data(), HASH_SIZE);
+    assert(pk == "b5730b639bd2b93074e417fd4be16bfb19751ac13e18ac567ba3b58684699d3e");
 }
 
 void test_sha256() {
@@ -79,7 +80,9 @@ void test_wots() {
 }
 
 int main(int argc, char *argv[]) {
+    cout << "Testing initialize...";
     test_initialize();
+    cout << "Passed." << endl;
     cout << "Testing sha256...";
     test_sha256();
     cout << "Passed." << endl;

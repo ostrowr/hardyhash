@@ -89,25 +89,3 @@ bool verify_ots(const signature_t &signature, const vector<byte> &message) {
 bool verify(const array<byte, HASH_SIZE> &pk, const vector<byte> &message, const signature_t &signature) {
     return verify_ots(signature, message) && verify_leaf(signature, pk);
 }
-
-/**
- * Verify a public key, message, signature triple.
- */
-// int main2(int argc, char *argv[]) {
-//     string public_key_path = argv[1];
-//     string message_path = argv[2];
-//     string signature_path = argv[3];
-
-//     array<byte, HASH_SIZE> pk = load_public_key(public_key_path);
-//     vector<byte> message = read_file(message_path);
-//     signature_t signature = load_signature(signature_path);
-
-//     bool success = verify(pk, message, signature);
-//     if (!success) {
-//         cout << "Verification failed." << endl;
-//         return 1;
-//     }
-//     cout << "Verified successfully." << endl;
-//     return 0;
-// }
-

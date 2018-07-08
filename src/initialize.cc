@@ -250,20 +250,3 @@ void write_signer_states(keys_t *k, string output_dir) {
     cereal::BinaryOutputArchive oarchive(os);
     oarchive(k->public_key);
 }
-
-// int main2(int argc, char *argv[]) {
-//     if (argc != 5) {
-//         print_usage();
-//     }
-//     // TODO error checking on the inputs
-//     size_t lg_n_signers = std::stoi(argv[1]);
-//     size_t lg_messages_per_signer = std::stoi(argv[2]);
-//     string randomness = argv[3];
-//     string output_dir = argv[4];
-//     keys_t *k = initialize(lg_n_signers, lg_messages_per_signer,
-//                            reinterpret_cast<const byte *>(randomness.c_str()),
-//                            randomness.length());
-//     write_signer_states(k, output_dir);
-//     delete k;
-//     return 0;
-// }

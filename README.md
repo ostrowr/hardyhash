@@ -27,6 +27,7 @@ To build outside the Docker image, you will need
 * A C++14 compliant compiler
 * openssl (libssl-dev)
 * cereal (https://github.com/USCiLab/cereal)
+* Catch2 (https://github.com/catchorg/Catch2) for unit tests
 
 See the Dockerfile for the expected install locations.
 

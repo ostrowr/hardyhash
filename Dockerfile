@@ -9,5 +9,7 @@ RUN apt-get update && \
     rm v1.2.2.tar.gz && \
     mkdir /home/include && \
     mv cereal-1.2.2/include/cereal /usr/local/include/cereal && \
-    rm -rf cereal-1.2.2
+    rm -rf cereal-1.2.2 && \
+    wget https://raw.githubusercontent.com/catchorg/Catch2/master/single_include/catch2/catch.hpp && \
+    mv catch.hpp /usr/local/include
 WORKDIR home/

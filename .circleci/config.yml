@@ -23,6 +23,11 @@ jobs:
             mv cereal-1.2.2/include/cereal /usr/local/include/cereal
             rm -rf cereal-1.2.2
       - run:
+          name: Get Catch2
+          command: |
+            wget https://raw.githubusercontent.com/catchorg/Catch2/master/single_include/catch2/catch.hpp && \
+            mv catch.hpp /usr/local/include
+      - run:
           name: Test
           command: |
             make coverage

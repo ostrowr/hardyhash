@@ -1,6 +1,5 @@
 #include "initialize.hh"
 
-
 #include <algorithm>
 #include <array>
 #include <cassert>
@@ -14,8 +13,6 @@
 #include <cereal/types/array.hpp>
 #include <cereal/types/stack.hpp>
 #include <cereal/types/vector.hpp>
-
-// #include "treehash.hh"
 
 using std::array;
 using std::cout;

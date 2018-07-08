@@ -32,7 +32,7 @@ release:    all
 profile:    all
 coverage:	all
 
-hardyhash: hardyhash.o initialize.o sign.o verify.o crypto_utils.o treehash.o types.o wots.o
+hardyhash: hardyhash.o types.o initialize.o sign.o verify.o crypto_utils.o treehash.o wots.o
 	$(CXX) $(CPPFLAGS) -o $@ $^ $(LDFLAGS)
 
 # initialize: initialize.o crypto_utils.o treehash.o types.o wots.o

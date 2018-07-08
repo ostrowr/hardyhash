@@ -20,7 +20,7 @@ struct merkle_node {
 
     template<class Archive>
     void serialize(Archive & archive) {
-        archive( hash, height, index );
+        archive(hash, height, index);
     }
 };
 

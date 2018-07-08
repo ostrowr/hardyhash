@@ -32,16 +32,19 @@ release:    all
 profile:    all
 coverage:	all
 
-initialize: initialize.o crypto_utils.o treehash.o types.o wots.o
+hardyhash: hardyhash.o initialize.o sign.o verify.o crypto_utils.o treehash.o types.o wots.o
 	$(CXX) $(CPPFLAGS) -o $@ $^ $(LDFLAGS)
 
-sign: sign.o crypto_utils.o treehash.o types.o wots.o
-	$(CXX) $(CPPFLAGS) -o $@ $^ $(LDFLAGS)
+# initialize: initialize.o crypto_utils.o treehash.o types.o wots.o
+# 	$(CXX) $(CPPFLAGS) -o $@ $^ $(LDFLAGS)
 
-verify: verify.o crypto_utils.o types.o wots.o
-	$(CXX) $(CPPFLAGS) -o $@ $^ $(LDFLAGS)
+# sign: sign.o crypto_utils.o treehash.o types.o wots.o
+# 	$(CXX) $(CPPFLAGS) -o $@ $^ $(LDFLAGS)
 
-test: test.o crypto_utils.o treehash.o types.o wots.o
+# verify: verify.o crypto_utils.o types.o wots.o
+# 	$(CXX) $(CPPFLAGS) -o $@ $^ $(LDFLAGS)
+
+test: test.o crypto_utils.o treehash.o types.o wots.o initialize.o
 	$(CXX) $(CPPFLAGS) -o $@ $^ $(LDFLAGS)
 
 Makefile.dependencies:: $(SOURCES) $(HEADERS)

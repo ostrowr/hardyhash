@@ -15,7 +15,7 @@
 #include <cereal/types/stack.hpp>
 #include <cereal/types/vector.hpp>
 
-#include "treehash.hh"
+// #include "treehash.hh"
 
 using std::array;
 using std::cout;
@@ -227,7 +227,7 @@ keys_t *initialize(size_t lg_n_signers, size_t lg_messages_per_signer, const byt
 /**
  * Print help message for initialize.
  */
-void print_usage() {
+void print_initialize_usage() {
     cout << endl << "Usage:" << endl
          << "\t ./initialize lg_n_signers lg_messages_per_signer randomness output_dir" << endl << endl
          << "\t lg_n_signers must be an even integer between 2 and 16, inclusive." << endl
@@ -254,19 +254,19 @@ void write_signer_states(keys_t *k, string output_dir) {
     oarchive(k->public_key);
 }
 
-int main(int argc, char *argv[]) {
-    if (argc != 5) {
-        print_usage();
-    }
-    // TODO error checking on the inputs
-    size_t lg_n_signers = std::stoi(argv[1]);
-    size_t lg_messages_per_signer = std::stoi(argv[2]);
-    string randomness = argv[3];
-    string output_dir = argv[4];
-    keys_t *k = initialize(lg_n_signers, lg_messages_per_signer,
-                           reinterpret_cast<const byte *>(randomness.c_str()),
-                           randomness.length());
-    write_signer_states(k, output_dir);
-    delete k;
-    return 0;
-}
+// int main2(int argc, char *argv[]) {
+//     if (argc != 5) {
+//         print_usage();
+//     }
+//     // TODO error checking on the inputs
+//     size_t lg_n_signers = std::stoi(argv[1]);
+//     size_t lg_messages_per_signer = std::stoi(argv[2]);
+//     string randomness = argv[3];
+//     string output_dir = argv[4];
+//     keys_t *k = initialize(lg_n_signers, lg_messages_per_signer,
+//                            reinterpret_cast<const byte *>(randomness.c_str()),
+//                            randomness.length());
+//     write_signer_states(k, output_dir);
+//     delete k;
+//     return 0;
+// }

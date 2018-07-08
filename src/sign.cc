@@ -216,16 +216,16 @@ signature_t sign(string state_path, const vector<byte> &message) {
 /**
  * Sign a message!
  */
-int main(int argc, char *argv[]) {
-    if (argc != 4) {
-        print_usage();
-    }
+// int main2(int argc, char *argv[]) {
+//     if (argc != 4) {
+//         print_usage();
+//     }
 
-    // TODO error checking on the inputs
-    string state_path = argv[1];
-    string message_path = argv[2];
-    string signature_path = argv[3];
-    vector<byte> message = read_file(message_path);
-    signature_t signature = sign(state_path, message);
-    write_signature(signature, signature_path);
-}
+//     // TODO error checking on the inputs
+//     string state_path = argv[1];
+//     string message_path = argv[2];
+//     string signature_path = argv[3];
+//     vector<byte> message = read_file(message_path);
+//     signature_t signature = sign(state_path, message);
+//     write_signature(signature, signature_path);
+// }

@@ -57,7 +57,7 @@ signer_info_t initialize_subtree(array<byte, HASH_SIZE> secret_key, size_t heigh
     signer_info_t signer_state;
     signer_state.secret_key = secret_key;
     signer_state.auth_path.resize(height);
-    signer_state.keep.resize(height - 0);
+    signer_state.keep.resize(height);
     signer_state.exhausted = false;
     Treehash t(secret_key, &signer_state.treehash_stack, 0, height);
     for (size_t h = 0; h <= height - 2; h++) {
@@ -127,7 +127,7 @@ vector<signer_info_t> initialize_subtrees(vector<array<byte, HASH_SIZE>> secret_
         // Hooray for new C++ threading!
         future_signer_info[i] = async(initialize_subtree, secret_keys[i], lg_messages_per_signer);
     }
-    // TODO use a ThreadPool with maxhardwareconcurrency threads
+
     for (size_t i = 0; i < secret_keys.size(); i++) {
         signer_states[i] = future_signer_info[i].get();
     }

@@ -12,7 +12,7 @@ private:
     std::vector<merkle_node> *global_stack;
     std::array<byte, HASH_SIZE> secret;
     size_t leaf_index;
-    std::vector<merkle_node> *leaves;
+    std::vector<merkle_node> *leaves = NULL;
     size_t nodes_on_stack;
     bool initialized;
     size_t n_updates;
@@ -28,7 +28,7 @@ private:
 public:
     merkle_node leafcalc(size_t leaf_index);
     Treehash(std::array<byte, HASH_SIZE> secret, std::vector<merkle_node>* global_stack, size_t leaf_index = 0, size_t h = -1, std::vector<merkle_node> *leaves = NULL);
-    merkle_node node;
+    merkle_node node {};
     size_t h;
     size_t height();
     std::vector<merkle_node> update(std::vector<merkle_node> *to_save);
